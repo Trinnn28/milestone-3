@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Data on media coverage on sports",
+    "section": "",
+    "text": "This graphic uses the Sports News dataset from NewsData.io, licensed under CC BY 4.0. Each point represents one article.\n\n\n\n\n\n\n\n\n\nThe available data covers only October 24–26, 2021, and does not include gender labels. This graphic describes article timing and headline length; it cannot measure gender balance in sports coverage."
+  },
+  {
+    "objectID": "analysis.html",
+    "href": "analysis.html",
+    "title": "Data on media coverage on sports",
+    "section": "",
+    "text": "This graphic uses the Sports News dataset from NewsData.io, licensed under CC BY 4.0. Each point represents one article.\n\n\n\n\n\n\n\n\n\nThe available data covers only October 24–26, 2021, and does not include gender labels. This graphic describes article timing and headline length; it cannot measure gender balance in sports coverage."
+  }
+]
