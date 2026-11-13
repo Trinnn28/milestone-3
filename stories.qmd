@@ -1,0 +1,175 @@
+---
+title: "Stories: Rivalries, Dynasties, Historic Seasons & Expansion"
+---
+
+Explore key moments, dynasties, rivalries, record-breakers, and expansion milestones across the **NBA (1946–2026)** and **WNBA (1997–2026)**. Because the two leagues have different founding eras and season lengths (*82 games in the NBA vs. up to 44 games in the WNBA*), their statistical histories are presented side by side on separate scales.
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(tidyverse)
+library(plotly)
+
+teams <- read_csv("data/teams.csv", show_col_types = FALSE)
+
+nba_top <- teams |>
+  filter(league == "NBA", championships > 0 | mvps_won_with_team > 0) |>
+  mutate(team_short = str_remove(team, " \\(.*\\)")) |>
+  arrange(desc(championships), desc(mvps_won_with_team)) |>
+  slice_head(n = 12) |>
+  mutate(team_short = fct_reorder(team_short, championships))
+
+p_nba <- ggplot(
+  nba_top,
+  aes(
+    x = championships,
+    y = team_short,
+    fill = mvps_won_with_team,
+    text = paste0(
+      "<b>", team, "</b><br>",
+      "NBA Championships: ", championships, " (", championship_years, ")<br>",
+      "NBA MVPs Won With Franchise: ", mvp_details
+    )
+  )
+) +
+  geom_col() +
+  scale_fill_gradient(low = "#93C5FD", high = "#1D428A", name = "NBA MVPs\n(With Team)") +
+  labs(
+    title = "NBA Championship Dynasties & Franchise MVPs (1946–2026)",
+    x = "Total NBA Championships",
+    y = NULL
+  ) +
+  theme_minimal(base_size = 12)
+
+ggplotly(p_nba, tooltip = "text")
+```
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+wnba_top <- teams |>
+  filter(league == "WNBA", championships > 0 | mvps_won_with_team > 0) |>
+  mutate(team_short = str_replace(team, " \\(2027 Relocation Revival\\)", " (1997–2008 / 2027)")) |>
+  arrange(desc(championships), desc(mvps_won_with_team)) |>
+  mutate(team_short = fct_reorder(team_short, championships))
+
+p_wnba <- ggplot(
+  wnba_top,
+  aes(
+    x = championships,
+    y = team_short,
+    fill = mvps_won_with_team,
+    text = paste0(
+      "<b>", team, "</b><br>",
+      "WNBA Championships: ", championships, " (", championship_years, ")<br>",
+      "WNBA MVPs Won With Franchise: ", mvp_details
+    )
+  )
+) +
+  geom_col() +
+  scale_fill_gradient(low = "#FDBA74", high = "#C2410C", name = "WNBA MVPs\n(With Team)") +
+  labs(
+    title = "WNBA Championship Franchises & Franchise MVPs (1997–2026)",
+    x = "Total WNBA Championships",
+    y = NULL
+  ) +
+  theme_minimal(base_size = 12)
+
+ggplotly(p_wnba, tooltip = "text")
+```
+
+*Chart note: Statistics current through the **2025–26 NBA Finals (June 2026)** and **2026 WNBA Finals (Fall 2026)**. Hover over any bar for exact championship years and MVP winners who won the award while playing for that franchise.*
+
+---
+
+## 1. Celtics vs. Lakers: Basketball's Defining Championship Rivalry (NBA)
+
+No rivalry in North American basketball matches the **Boston Celtics** (18 NBA championships) and **Los Angeles Lakers** (17 NBA championships), who have met **12 times in the NBA Finals** and account for nearly half of all titles since 1947.
+
+- **1959–1969 (Russell vs. West & Baylor):** Bill Russell—who won **5 NBA MVPs** while playing for Boston—led the Celtics past the Lakers in seven Finals series during an 11-title dynasty.
+- **1980s Revival (Bird vs. Magic):** Larry Bird (**3 Celtics MVPs**, 1984–86) and Magic Johnson (**3 Lakers MVPs**, 1987, 1989, 1990) met in the 1984, 1985, and 1987 NBA Finals, transforming the NBA's television and cultural reach.
+- **Modern Chapters (2008–2024):** Boston won in 2008 behind Paul Pierce and Kevin Garnett (who won his 2004 MVP earlier with Minnesota), Kobe Bryant (2008 Lakers MVP) answered in Game 7 of the 2010 Finals, LeBron James tied Boston at 17 banners in 2020, and Jayson Tatum and Jaylen Brown lifted Banner **18** in **2024**.
+
+**Read More (Original Sources):**
+[NBA History](https://www.nba.com/history) •
+[NBA All-Time Awards](https://www.nba.com/news/history-all-time-awards) •
+[Celtics Franchise History (Basketball-Reference)](https://www.basketball-reference.com/teams/BOS/) •
+[Lakers Franchise History (Basketball-Reference)](https://www.basketball-reference.com/teams/LAL/)
+
+---
+
+## 2. WNBA Dynasties: From the 4-Peat Comets to A'ja Wilson's Aces—and Houston's 2027 Return (WNBA)
+
+Across the WNBA's first 30 seasons (**1997–2026**), four franchises have set the championship standard—and the original dynasty is officially coming back:
+
+- **Houston Comets (4 Titles: 1997, 1998, 1999, 2000):** Led by **Cynthia Cooper** (back-to-back WNBA MVPs in 1997 & 1998, plus four straight Finals MVPs), **Sheryl Swoopes** (3 WNBA MVPs with Houston in 2000, 2002, & 2005), and **Tina Thompson**, Houston achieved the only **four-peat** in WNBA history. Following the 2026 season, the WNBA approved relocating the Connecticut Sun to Houston to revive the **Houston Comets** beginning in **2027**.
+- **Minnesota Lynx (4 Titles: 2011, 2013, 2015, 2017) & Seattle Storm (4 Titles: 2004, 2010, 2018, 2020):** Cheryl Reeve's Lynx dominated odd-numbered years in the 2010s with **Maya Moore** (2014 MVP) and **Sylvia Fowles** (2017 MVP), while Seattle went a perfect **4–0** in Finals appearances behind **Sue Bird**, **Lauren Jackson** (3 Storm MVPs), and **Breanna Stewart** (2018 Storm MVP; later 2023 Liberty MVP).
+- **Las Vegas Aces (3 Titles: 2022, 2023, 2025):** Coached by Becky Hammon, Las Vegas captured three championships in four years anchored by **A'ja Wilson**, who set an all-time WNBA record by winning her **fifth regular-season MVP award in 2026** (2020, 2022, 2024, 2025, 2026).
+
+**Read More (Original Sources):**
+[WNBA All-Time Champions](https://www.wnba.com/all-time-wnba-champions) •
+[WNBA History](https://www.wnba.com/history) •
+[WNBA MVP Award Winners (Basketball-Reference)](https://www.basketball-reference.com/wnba/awards/mvp.html) •
+[Las Vegas Aces History](https://www.basketball-reference.com/wnba/teams/LVA/)
+
+---
+
+## 3. Chasing Perfection: 72–10 Chicago Bulls & 73–9 Golden State Warriors (NBA)
+
+Two 82-game NBA regular seasons stand above every other in win-loss history:
+
+- **1995–96 Chicago Bulls (72–10 Regular Season, 15–3 Playoffs):** Returning for his first full season after 1993–94 retirement, **Michael Jordan** won his fourth of **5 NBA MVPs with Chicago**, led the league in scoring (30.4 PPG), and teamed with Scottie Pippen and Dennis Rodman to win the first title of Chicago's second three-peat (**1996–1998**).
+- **2015–16 Golden State Warriors (73–9 Regular Season):** **Stephen Curry** shattered his own NBA single-season record with **402 three-pointers** during the 2015–16 regular season and became the **first unanimous MVP in NBA history**, pushing Cleveland to a legendary Game 7 in the 2016 Finals (where LeBron James and Kyrie Irving completed the only 3–1 Finals comeback in NBA history) before Golden State added titles in **2017, 2018, and 2022**.
+
+**Read More (Original Sources):**
+[NBA Statistics](https://www.nba.com/stats/) •
+[1995–96 Bulls Summary (Basketball-Reference)](https://www.basketball-reference.com/teams/CHI/1996.html) •
+[2015–16 Warriors Summary (Basketball-Reference)](https://www.basketball-reference.com/teams/GSW/2016.html)
+
+---
+
+## 4. Historic 2025 & 2026 Breakthroughs: Valkyries, Knicks, and Thunder (NBA & WNBA)
+
+The **2025 and 2026 seasons** delivered historic championship stories across both leagues:
+
+- **Golden State Valkyries Win First Game 7 in WNBA Finals History (2026 WNBA Season):** Just one year after debuting as a 2025 expansion franchise in San Francisco, coach Natalie Nakase's Valkyries defeated the Atlanta Dream **4–3** in the **2026 WNBA Finals**—the first Finals Game 7 ever played under the WNBA's expanded best-of-seven format—with **Gabby Williams** earning Finals MVP honors.
+- **New York Knicks End a 53-Year Title Drought (2025–26 NBA Season):** For the first time since 1973, Madison Square Garden celebrated an NBA championship in **June 2026** as Finals MVP **Jalen Brunson**, OG Anunoby, Mikal Bridges, Josh Hart, and Karl-Anthony Towns defeated Victor Wembanyama and the San Antonio Spurs **4–1**.
+- **Oklahoma City Thunder & Back-to-Back MVP Shai Gilgeous-Alexander (2024–25 & 2025–26 NBA Seasons):** One year earlier, Oklahoma City won Game 7 of the **2025 NBA Finals** over the Indiana Pacers behind **Shai Gilgeous-Alexander**, who went on to win consecutive regular-season **NBA MVP awards in 2024–25 and 2025–26**.
+
+**Read More (Original Sources):**
+[2026 NBA Playoffs Summary](https://www.basketball-reference.com/playoffs/NBA_2026.html) •
+[2025 NBA Playoffs Summary](https://www.basketball-reference.com/playoffs/NBA_2025.html) •
+[2026 WNBA Playoffs Summary](https://www.basketball-reference.com/wnba/playoffs/2026.html) •
+[WNBA All-Time Champions](https://www.wnba.com/all-time-wnba-champions)
+
+---
+
+## 5. All-Time Statistical Icons—And Why League Context Matters (NBA & WNBA)
+
+Comparing career totals requires respecting each league's schedule structure: NBA seasons have featured **82 regular-season games** since 1967–68, whereas WNBA seasons grew gradually from **28 games (1997)** to **34 games (2003–2019)**, **40 games (2023–2024)**, and **44 games (2025–2026)**.
+
+- **WNBA Career Benchmarks (1997–2026):** **Diana Taurasi** (Phoenix Mercury, 2004–2024) retired as the only player in WNBA history past 10,000 regular-season points (**10,646 PTS**). **Sue Bird** (Seattle Storm) holds the WNBA all-time assists record (**3,234 AST**), and **Tamika Catchings** (Indiana Fever, 2011 MVP) leads WNBA history in career steals (**1,074 STL**). Meanwhile, **Caitlin Clark** reshaped single-season playmaking benchmarks with Indiana while helping drive record arena attendance across the league.
+- **NBA Career Benchmarks (1946–2026):** **LeBron James** surpassed Kareem Abdul-Jabbar's long-standing 38,387-point mark to pass **40,000+ regular-season NBA points** (winning 4 NBA MVPs across Cleveland and Miami before winning the 2020 title with the Lakers), while **John Stockton** still holds the NBA's career assists (**15,806 AST**) and steals (**3,265 STL**) records for the Utah Jazz.
+
+**Read More (Original Sources):**
+[WNBA All-Time Leaders](https://stats.wnba.com/alltime-leaders/) •
+[NBA All-Time Statistical Leaders](https://www.nba.com/stats/alltime-leaders) •
+[NBA Franchise Career Leaders (Basketball-Reference)](https://www.basketball-reference.com/leaders/franchise.html)
+
+---
+
+## 6. Redrawing the Basketball Map: The 2025–2030 Expansion Wave (NBA & WNBA)
+
+Professional basketball's North American map is expanding faster in the late 2020s than at any point in decades:
+
+- **WNBA Expansion from 12 to 18 Teams (2025–2030):** Following the **Golden State Valkyries** (2025), the WNBA launched two 30th-anniversary expansion franchises in 2026—the **Portland Fire** and Canada's first WNBA team, the **Toronto Tempo**—and officially awarded three additional franchises backed by NBA ownership groups: **Cleveland (2028)**, **Detroit (2029)**, and **Philadelphia (2030)**.
+- **NBA Expansion Evaluations in Seattle & Las Vegas (Target 2028–29):** In **March 2026**, the NBA Board of Governors voted **30–0** to formally advance expansion evaluations for **Seattle** (poised to revive the beloved SuperSonics tradition at Climate Pledge Arena) and **Las Vegas** (already home to NBA Summer League and the Emirates NBA Cup Final Four).
+
+**Read More (Original Sources):**
+[WNBA Teams](https://www.wnba.com/teams) •
+[NBA Teams](https://www.nba.com/teams) •
+[Basketball-Reference Active & Historical Franchises](https://www.basketball-reference.com/teams/)

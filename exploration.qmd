@@ -1,0 +1,553 @@
+---
+title: "Exploration: NBA & WNBA Interactive Franchise Map"
+format:
+  html:
+    page-layout: full
+---
+
+Click **any state** on the map (or use the pull-down menus below) to explore every NBA and WNBA franchise in that state—including newly debuted and officially announced expansion franchises—inspect full 10-point franchise profiles, or compare any **NBA team** and **WNBA team** side by side.
+
+> **Statistical Note:** NBA statistics (*2026–27 regular season, 82-game format, founded 1946*) and WNBA statistics (*2026 season, 44-game format, founded 1997*) are kept strictly separate below because the two leagues play different season lengths, schedules, and eras. Current rosters and recent starting lineups reflect verified data as of **November 13, 2026**.
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(tidyverse)
+library(sf)
+library(leaflet)
+library(jsonlite)
+library(htmltools)
+library(htmlwidgets)
+
+teams <- read_csv("data/teams.csv", show_col_types = FALSE) |>
+  mutate(
+    team_id = paste0(league, "_", row_number()),
+    # Slightly offset markers that share exact arena coordinates so both are clickable when zoomed in
+     dup_idx = ave(lat, paste(round(lat, 3), round(lon, 3)), FUN = seq_along),
+    plot_lat = lat + (dup_idx - 1) * 0.035,
+    plot_lon = lon + (dup_idx - 1) * 0.035
+  )
+
+# Load U.S. State Map Data from PublicaMundi GeoJSON
+states_sf <- st_read(
+  "https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json",
+  quiet = TRUE
+)
+
+state_summary <- teams |>
+  summarise(
+    nba_count = sum(league == "NBA"),
+    wnba_count = sum(league == "WNBA"),
+    team_list = paste0(team, " (", league, ") collapse_sep", collapse = ""),
+    .by = state
+  ) |>
+  mutate(
+    team_list = str_replace_all(team_list, " collapse_sep", "; ") |> str_remove("; $")
+  )
+
+states_map <- states_sf |>
+  left_join(state_summary, by = c("name" = "state")) |>
+  mutate(
+    nba_count = replace_na(nba_count, 0L),
+    wnba_count = replace_na(wnba_count, 0L),
+    coverage = case_when(
+      nba_count > 0 & wnba_count > 0 ~ "Both NBA & WNBA",
+      nba_count > 0 & wnba_count == 0 ~ "NBA Only",
+      nba_count == 0 & wnba_count > 0 ~ "WNBA Only",
+      TRUE ~ "No NBA/WNBA Franchise"
+    ),
+    hover_label = ifelse(
+      nba_count + wnba_count > 0,
+      paste0(name, ": ", nba_count, " NBA, ", wnba_count, " WNBA — Click to explore"),
+      paste0(name, ": 0 NBA, 0 WNBA franchises — Click for state status")
+    )
+  )
+
+pal <- colorFactor(
+  palette = c(
+    "Both NBA & WNBA" = "#6A3D9A",
+    "NBA Only" = "#1D428A",
+    "WNBA Only" = "#FA4616",
+    "No NBA/WNBA Franchise" = "#D9DEE5"
+  ),
+  levels = c("Both NBA & WNBA", "NBA Only", "WNBA Only", "No NBA/WNBA Franchise")
+)
+
+team_pal <- colorFactor(
+  palette = c("NBA" = "#1D428A", "WNBA" = "#FA4616"),
+  levels = c("NBA", "WNBA")
+)
+
+# Build interactive Leaflet map with click hooks on polygons and team markers
+us_map <- leaflet(options = leafletOptions(minZoom = 3)) |>
+  addProviderTiles(providers$CartoDB.Positron) |>
+  setView(lng = -96.5, lat = 39.0, zoom = 4) |>
+  addPolygons(
+    data = states_map,
+    layerId = ~name,
+    fillColor = ~pal(coverage),
+    fillOpacity = 0.62,
+    color = "#FFFFFF",
+    weight = 1.4,
+    label = ~hover_label,
+    highlightOptions = highlightOptions(
+      weight = 2.8,
+      color = "#111827",
+      fillOpacity = 0.82,
+      bringToFront = FALSE
+    )
+  ) |>
+  addCircleMarkers(
+    data = teams,
+    lng = ~plot_lon,
+    lat = ~plot_lat,
+    layerId = ~paste0("TEAM|", team_id),
+    radius = 7,
+    fillColor = ~team_pal(league),
+    fillOpacity = 0.95,
+    color = "#FFFFFF",
+    weight = 2,
+    label = ~paste0(team, " (", league, " — ", city, ", ", state, ")")
+  ) |>
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = states_map$coverage,
+    title = "State Franchise Presence",
+    opacity = 0.85
+  ) |>
+  onRender("
+    function(el, x) {
+      var map = this;
+      map.eachLayer(function(layer) {
+        if (layer.options && layer.options.layerId) {
+          layer.on('click', function(e) {
+            var id = layer.options.layerId;
+            if (typeof id === 'string' && id.indexOf('TEAM|') === 0) {
+              L.DomEvent.stopPropagation(e);
+              var tid = id.replace('TEAM|', '');
+              if (window.selectTeamFromMap) window.selectTeamFromMap(tid);
+            } else if (typeof id === 'string') {
+              if (window.selectStateFromMap) window.selectStateFromMap(id);
+            }
+          });
+        }
+      });
+    }
+  ")
+
+all_states_sorted <- sort(unique(c(states_sf$name, teams$state)))
+teams_json <- toJSON(teams, dataframe = "rows", auto_unbox = TRUE)
+states_json <- toJSON(all_states_sorted, auto_unbox = TRUE)
+```
+
+```{r}
+#| echo: false
+us_map
+```
+
+```{r}
+#| echo: false
+HTML(paste0(
+  '<style>
+    .exp-controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 12px;
+      margin: 18px 0;
+      padding: 16px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+    }
+    .exp-controls label {
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: #1e293b;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .exp-controls select {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      font-size: 0.92rem;
+    }
+    .state-banner {
+      padding: 16px 20px;
+      border-radius: 10px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      margin-bottom: 18px;
+    }
+    .league-split {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+    .league-box {
+      padding: 12px 14px;
+      border-radius: 8px;
+      background: #f8fafc;
+      border-left: 5px solid #1d428a;
+    }
+    .league-box.wnba {
+      border-left-color: #fa4616;
+    }
+    .team-chip-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin: 5px 6px 5px 0;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: all 0.15s ease;
+    }
+    .team-chip-btn:hover {
+      background: #eff6ff;
+      border-color: #2563eb;
+    }
+    .profile-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      margin-bottom: 18px;
+    }
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 14px;
+      margin-bottom: 14px;
+    }
+    .profile-logo {
+      width: 68px;
+      height: 68px;
+      object-fit: contain;
+      background: #f8fafc;
+      border-radius: 10px;
+      padding: 6px;
+      border: 1px solid #e2e8f0;
+    }
+    .badge-lg {
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-right: 6px;
+    }
+    .badge-nba { background: #1d428a; }
+    .badge-wnba { background: #fa4616; }
+    .badge-status { background: #475569; }
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 12px;
+    }
+    .detail-item {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 0.9rem;
+    }
+    .detail-item strong {
+      display: block;
+      color: #0f172a;
+      margin-bottom: 3px;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 18px;
+      margin-top: 14px;
+    }
+    .roster-box {
+      max-height: 110px;
+      overflow-y: auto;
+      font-size: 0.85rem;
+      line-height: 1.45;
+    }
+  </style>
+
+  <div class="exp-controls">
+    <div>
+      <label for="stateSelect">1. Select a State / Province (or click map):</label>
+      <select id="stateSelect"></select>
+    </div>
+    <div>
+      <label for="teamSelect">2. Inspect Single Team Full Profile:</label>
+      <select id="teamSelect"></select>
+    </div>
+    <div>
+      <label for="compareNbaSelect">3. Side-by-Side: Choose NBA Team:</label>
+      <select id="compareNbaSelect"></select>
+    </div>
+    <div>
+      <label for="compareWnbaSelect">4. Side-by-Side: Choose WNBA Team:</label>
+      <select id="compareWnbaSelect"></select>
+    </div>
+  </div>
+
+  <div id="stateOutput" class="state-banner"></div>
+  <div id="singleTeamOutput"></div>
+
+  <h3 style="margin-top: 28px;">Side-by-Side NBA vs. WNBA Franchise Comparison</h3>
+  <p style="font-size: 0.9rem; color: #475569;">
+    Compare an NBA franchise and a WNBA franchise side by side. Note that NBA statistics (82-game season, founded 1946) and WNBA statistics (44-game season, founded 1997) reflect distinct league schedules and historical eras.
+  </p>
+  <div id="compareOutput" class="compare-grid"></div>
+
+  <script>
+    const TEAMS = ', teams_json, ';
+    const ALL_STATES = ', states_json, ';
+
+    const stateSelect = document.getElementById("stateSelect");
+    const teamSelect = document.getElementById("teamSelect");
+    const compareNbaSelect = document.getElementById("compareNbaSelect");
+    const compareWnbaSelect = document.getElementById("compareWnbaSelect");
+
+    function escapeHtml(str) {
+      return String(str || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function formatSources(srcStr) {
+      if (!srcStr) return "";
+      return srcStr.split("|").map(s => s.trim()).filter(Boolean).map(url => {
+        let label = "Source";
+        if (url.includes("nba.com/stats")) label = "NBA Stats";
+        else if (url.includes("stats.wnba.com")) label = "WNBA Stats";
+        else if (url.includes("basketball-reference.com")) label = "Basketball-Reference";
+        else if (url.includes("wnba.com")) label = "WNBA.com";
+        else if (url.includes("nba.com")) label = "NBA.com";
+        return `<a href="${escapeHtml(url)}" target="_blank" rel="noopener">${label}</a>`;
+      }).join(" &bull; ");
+    }
+
+    function fallbackLogoDataUri(league) {
+      const bg = league === "NBA" ? "%231d428a" : "%23fa4616";
+      return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="68" height="68"><rect width="100%" height="100%" rx="10" fill="${bg}"/><text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" fill="white" font-family="Arial" font-weight="bold" font-size="16">${league}</text></svg>`;
+    }
+
+    function renderTeamCard(t) {
+      if (!t) return "";
+      const badgeClass = t.league === "NBA" ? "badge-nba" : "badge-wnba";
+      const fallback = fallbackLogoDataUri(t.league);
+      const logoSrc = t.logo ? escapeHtml(t.logo) : fallback;
+      return `
+        <div class="profile-card">
+          <div class="profile-header">
+            <img class="profile-logo" src="${logoSrc}" alt="${escapeHtml(t.team)} logo" onerror="this.onerror=null;this.src=\'${fallback}\';" />
+            <div>
+              <div style="margin-bottom: 4px;">
+                <span class="badge-lg ${badgeClass}">${escapeHtml(t.league)}</span>
+                <span class="badge-lg badge-status">${escapeHtml(t.status)}</span>
+              </div>
+              <h4 style="margin: 0; font-size: 1.25rem;">${escapeHtml(t.team)}</h4>
+              <div style="color: #475569; font-size: 0.92rem;">${escapeHtml(t.city)}, ${escapeHtml(t.state)} &bull; <em>${escapeHtml(t.season_context)}</em></div>
+            </div>
+          </div>
+          <p style="margin-top: 0; color: #1e293b;">${escapeHtml(t.description)}</p>
+          <div class="detail-grid">
+            <div class="detail-item">
+              <strong>Conference &amp; Division</strong>
+              ${escapeHtml(t.conference)} Conference &mdash; ${escapeHtml(t.division)}
+            </div>
+            <div class="detail-item">
+              <strong>Total Championships &amp; Years (${escapeHtml(t.league)})</strong>
+              <b>${escapeHtml(t.championships)}</b> Championship(s)<br/>
+              <span style="color:#475569;">Years: ${escapeHtml(t.championship_years)}</span>
+            </div>
+            <div class="detail-item">
+              <strong>MVPs Won While With Franchise</strong>
+              ${escapeHtml(t.mvp_details)}
+            </div>
+            <div class="detail-item">
+              <strong>Other Career MVP Winners Associated With Franchise</strong>
+              ${escapeHtml(t.mvp_alumni_other)}
+            </div>
+            <div class="detail-item">
+              <strong>5 Most Recent Starting Players</strong>
+              ${escapeHtml(t.starting_five)}
+            </div>
+            <div class="detail-item">
+              <strong>Head Coach &amp; Coaching Staff</strong>
+              ${escapeHtml(t.coaching_staff)}
+            </div>
+            <div class="detail-item" style="grid-column: 1 / -1;">
+              <strong>All-Time Franchise Statistical Leaders (${escapeHtml(t.league)} Records)</strong>
+              ${escapeHtml(t.all_time_leaders)}
+            </div>
+            <div class="detail-item" style="grid-column: 1 / -1;">
+              <strong>Current Roster</strong>
+              <div class="roster-box">${escapeHtml(t.roster)}</div>
+            </div>
+            <div class="detail-item" style="grid-column: 1 / -1;">
+              <strong>Historical Accomplishments &amp; Recent Achievements</strong>
+              ${escapeHtml(t.accomplishments)}
+            </div>
+          </div>
+          <div style="margin-top: 12px; font-size: 0.85rem; color: #475569;">
+            <strong>Verified Sources:</strong> ${formatSources(t.sources)}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderState(stateName) {
+      stateSelect.value = stateName;
+      const inState = TEAMS.filter(t => t.state === stateName);
+      const nbaTeams = inState.filter(t => t.league === "NBA");
+      const wnbaTeams = inState.filter(t => t.league === "WNBA");
+      const box = document.getElementById("stateOutput");
+
+      if (inState.length === 0) {
+        box.innerHTML = `
+          <h4 style="margin: 0 0 6px 0;">${escapeHtml(stateName)}</h4>
+          <p style="margin: 0; color: #475569;">
+            <strong>${escapeHtml(stateName)}</strong> currently has <strong>0 NBA</strong> and <strong>0 WNBA</strong> franchises (active or officially announced expansion as of November 2026). Click another state on the map or use the pull-down menus above to explore any team!
+          </p>
+        `;
+        return;
+      }
+
+      const nbaTitles = nbaTeams.reduce((acc, t) => acc + Number(t.championships || 0), 0);
+      const nbaMvps = nbaTeams.reduce((acc, t) => acc + Number(t.mvps_won_with_team || 0), 0);
+      const wnbaTitles = wnbaTeams.reduce((acc, t) => acc + Number(t.championships || 0), 0);
+      const wnbaMvps = wnbaTeams.reduce((acc, t) => acc + Number(t.mvps_won_with_team || 0), 0);
+
+      const makeButtons = (arr) => arr.length === 0
+        ? `<div style="color:#64748b; font-size:0.9rem;">No ${arr === nbaTeams ? "NBA" : "WNBA"} franchise in ${escapeHtml(stateName)}.</div>`
+        : arr.map(t => `<button type="button" class="team-chip-btn" onclick="window.selectTeamFromMap(\'${t.team_id}\')">${escapeHtml(t.team)} (${escapeHtml(t.status === "Active" ? t.city : t.status)})</button>`).join("");
+
+      box.innerHTML = `
+        <h4 style="margin: 0 0 4px 0;">State Overview: ${escapeHtml(stateName)}</h4>
+        <div style="font-size: 0.9rem; color: #475569;">Click any team button below to open its full 10-point profile above the comparison view. (NBA and WNBA totals are tallied separately.)</div>
+        <div class="league-split">
+          <div class="league-box">
+            <strong>NBA in ${escapeHtml(stateName)}:</strong> ${nbaTeams.length} franchise(s) &bull; ${nbaTitles} NBA Title(s) &bull; ${nbaMvps} NBA MVP Award(s) won with state franchises
+            <div style="margin-top: 8px;">${makeButtons(nbaTeams)}</div>
+          </div>
+          <div class="league-box wnba">
+            <strong>WNBA in ${escapeHtml(stateName)}:</strong> ${wnbaTeams.length} franchise(s) &bull; ${wnbaTitles} WNBA Title(s) &bull; ${wnbaMvps} WNBA MVP Award(s) won with state franchises
+            <div style="margin-top: 8px;">${makeButtons(wnbaTeams)}</div>
+          </div>
+        </div>
+      `;
+
+      // Automatically select the first team in the state for the single-team profile
+      selectTeam(inState[0].team_id, false);
+
+      // If this state has an NBA team, pre-load the first NBA team in comparison; same for WNBA!
+      if (nbaTeams.length > 0) compareNbaSelect.value = nbaTeams[0].team_id;
+      if (wnbaTeams.length > 0) compareWnbaSelect.value = wnbaTeams[0].team_id;
+      renderComparison();
+    }
+
+    function selectTeam(teamId, syncState = true) {
+      const t = TEAMS.find(x => x.team_id === teamId);
+      if (!t) return;
+      teamSelect.value = t.team_id;
+      if (syncState) {
+        stateSelect.value = t.state;
+      }
+      document.getElementById("singleTeamOutput").innerHTML = renderTeamCard(t);
+    }
+
+    function renderComparison() {
+      const nbaTeam = TEAMS.find(x => x.team_id === compareNbaSelect.value);
+      const wnbaTeam = TEAMS.find(x => x.team_id === compareWnbaSelect.value);
+      document.getElementById("compareOutput").innerHTML =
+        renderTeamCard(nbaTeam) + renderTeamCard(wnbaTeam);
+    }
+
+    // Populate dropdowns
+    ALL_STATES.forEach(st => {
+      const count = TEAMS.filter(t => t.state === st).length;
+      const opt = document.createElement("option");
+      opt.value = st;
+      opt.textContent = count > 0 ? `${st} (${count} franchise${count > 1 ? "s" : ""})` : `${st} (0 franchises)`;
+      stateSelect.appendChild(opt);
+    });
+
+    ["NBA", "WNBA"].forEach(lg => {
+      const grp = document.createElement("optgroup");
+      grp.label = lg + " Franchises";
+      TEAMS.filter(t => t.league === lg).forEach(t => {
+        const opt = document.createElement("option");
+        opt.value = t.team_id;
+        opt.textContent = `${t.team} (${t.state})`;
+        grp.appendChild(opt);
+
+        const cOpt = opt.cloneNode(true);
+        if (lg === "NBA") compareNbaSelect.appendChild(cOpt);
+        else compareWnbaSelect.appendChild(cOpt);
+      });
+      teamSelect.appendChild(grp);
+    });
+
+    stateSelect.addEventListener("change", () => renderState(stateSelect.value));
+    teamSelect.addEventListener("change", () => selectTeam(teamSelect.value, true));
+    compareNbaSelect.addEventListener("change", renderComparison);
+    compareWnbaSelect.addEventListener("change", renderComparison);
+
+    window.selectStateFromMap = function(stateName) {
+      renderState(stateName);
+      document.getElementById("stateOutput").scrollIntoView({ behavior: "smooth", block: "nearest" });
+    };
+
+    window.selectTeamFromMap = function(teamId) {
+      const t = TEAMS.find(x => x.team_id === teamId);
+      if (t) {
+        renderState(t.state);
+        selectTeam(teamId, false);
+        if (t.league === "NBA") compareNbaSelect.value = t.team_id;
+        else compareWnbaSelect.value = t.team_id;
+        renderComparison();
+        document.getElementById("singleTeamOutput").scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    };
+
+    // Initialize default view on California (features both NBA & WNBA champions!)
+    renderState("California");
+  </script>
+'))
+```
+
+### Primary Data Sources
+
+- **NBA Statistics:** [nba.com/stats](https://www.nba.com/stats/)
+- **NBA History:** [nba.com/history](https://www.nba.com/history)
+- **NBA Awards:** [nba.com/news/history-all-time-awards](https://www.nba.com/news/history-all-time-awards)
+- **NBA Teams:** [nba.com/teams](https://www.nba.com/teams)
+- **WNBA Statistics:** [stats.wnba.com](https://stats.wnba.com/)
+- **WNBA All-Time Leaders:** [stats.wnba.com/alltime-leaders](https://stats.wnba.com/alltime-leaders/)
+- **WNBA History:** [wnba.com/history](https://www.wnba.com/history)
+- **WNBA Championships:** [wnba.com/all-time-wnba-champions](https://www.wnba.com/all-time-wnba-champions)
+- **WNBA Teams:** [wnba.com/teams](https://www.wnba.com/teams)
+- **Basketball-Reference:** [basketball-reference.com](https://www.basketball-reference.com/)
+- **NBA Franchise Leaders:** [basketball-reference.com/leaders/franchise.html](https://www.basketball-reference.com/leaders/franchise.html)
+- **U.S. State Map Data:** [PublicaMundi MappingAPI us-states.json](https://github.com/PublicaMundi/MappingAPI/blob/master/data/geojson/us-states.json)
