@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Stories: Rivalries, Dynasties, Historic Seasons &amp; Expansion – Data on media coverage on sports</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-977607561cd60f84a551947bb62c3781.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.12.1/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="site_libs/plotly-main-2.25.2/plotly-latest.min.js"></script>
+
+
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Data on media coverage on sports</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./exploration.html"> 
+<span class="menu-text">Exploration</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./stories.html" aria-current="page"> 
+<span class="menu-text">Stories</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Stories: Rivalries, Dynasties, Historic Seasons &amp; Expansion</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Explore key moments, dynasties, rivalries, record-breakers, and expansion milestones across the <strong>NBA (1946–2026)</strong> and <strong>WNBA (1997–2026)</strong>. Because the two leagues have different founding eras and season lengths (<em>82 games in the NBA vs.&nbsp;up to 44 games in the WNBA</em>), their statistical histories are presented side by side on separate scales.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-988d4c7a0b1b975b85c7" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-988d4c7a0b1b975b85c7">{"x":{"data":[{"orientation":"v","width":3,"base":3.5499999999999998,"x":[1.5],"y":[0.90000000000000036],"text":"<b>Detroit Pistons<\/b><br>NBA Championships: 3 (1989, 1990, 2004)<br>NBA MVPs Won With Franchise: 0 MVPs won while playing for franchise","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(147,197,253,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":3,"base":5.5499999999999998,"x":[1.5],"y":[0.90000000000000036],"text":"<b>New York Knicks<\/b><br>NBA Championships: 3 (1970, 1973, 2026)<br>NBA MVPs Won With Franchise: 1 trophy/trophies by 1 player(s): Willis Reed (1: 1969-70)","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(136,183,241,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":3,"base":4.5499999999999998,"x":[1.5],"y":[0.90000000000000036],"text":"<b>Miami Heat<\/b><br>NBA Championships: 3 (2006, 2012, 2013)<br>NBA MVPs Won With Franchise: 2 trophy/trophies by 1 player(s): LeBron James (2: 2011-12, 2012-13)","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(125,169,229,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[7,5],"base":[9.5500000000000007,7.5499999999999998],"x":[3.5,2.5],"y":[0.89999999999999858,0.89999999999999947],"text":["<b>Golden State Warriors<\/b><br>NBA Championships: 7 (1947, 1956, 1975, 2015, 2017, 2018, 2022)<br>NBA MVPs Won With Franchise: 3 trophy/trophies by 2 player(s): Stephen Curry (2: 2014-15, 2015-16); Wilt Chamberlain (1: 1959-60)","<b>San Antonio Spurs<\/b><br>NBA Championships: 5 (1999, 2003, 2005, 2007, 2014)<br>NBA MVPs Won With Franchise: 3 trophy/trophies by 2 player(s): Tim Duncan (2: 2001-02, 2002-03); David Robinson (1: 1994-95)"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(114,155,217,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[2,2],"base":[0.55000000000000004,2.5499999999999998],"x":[1,1],"y":[0.89999999999999991,0.90000000000000036],"text":["<b>Houston Rockets<\/b><br>NBA Championships: 2 (1994, 1995)<br>NBA MVPs Won With Franchise: 4 trophy/trophies by 3 player(s): James Harden (1: 2017-18); Hakeem Olajuwon (1: 1993-94); Moses Malone (2: 1978-79, 1981-82)","<b>Oklahoma City Thunder<\/b><br>NBA Championships: 2 (1979, 2025)<br>NBA MVPs Won With Franchise: 4 trophy/trophies by 3 player(s): Shai Gilgeous-Alexander (2: 2024-25, 2025-26); Russell Westbrook (1: 2016-17); Kevin Durant (1: 2013-14)"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(103,142,206,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":2,"base":1.55,"x":[1],"y":[0.90000000000000013],"text":"<b>Milwaukee Bucks<\/b><br>NBA Championships: 2 (1971, 2021)<br>NBA MVPs Won With Franchise: 5 trophy/trophies by 2 player(s): Giannis Antetokounmpo (2: 2018-19, 2019-20); Kareem Abdul-Jabbar (3: 1970-71, 1971-72, 1973-74)","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(91,128,194,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":6,"base":8.5500000000000007,"x":[3],"y":[0.89999999999999858],"text":"<b>Chicago Bulls<\/b><br>NBA Championships: 6 (1991, 1992, 1993, 1996, 1997, 1998)<br>NBA MVPs Won With Franchise: 6 trophy/trophies by 2 player(s): Derrick Rose (1: 2010-11); Michael Jordan (5: 1987-88, 1990-91, 1991-92, 1995-96, 1997-98)","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(80,115,183,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":3,"base":6.5499999999999998,"x":[1.5],"y":[0.90000000000000036],"text":"<b>Philadelphia 76ers<\/b><br>NBA Championships: 3 (1955, 1967, 1983)<br>NBA MVPs Won With Franchise: 7 trophy/trophies by 5 player(s): Joel Embiid (1: 2022-23); Allen Iverson (1: 2000-01); Moses Malone (1: 1982-83); Julius Erving (1: 1980-81); Wilt Chamberlain (3: 1965-66, 1966-67, 1967-68)","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(68,103,171,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":17,"base":10.550000000000001,"x":[8.5],"y":[0.89999999999999858],"text":"<b>Los Angeles Lakers<\/b><br>NBA Championships: 17 (1949, 1950, 1952, 1953, 1954, 1972, 1980, 1982, 1985, 1987, 1988, 2000, 2001, 2002, 2009, 2010, 2020)<br>NBA MVPs Won With Franchise: 8 trophy/trophies by 4 player(s): Kobe Bryant (1: 2007-08); Shaquille O'Neal (1: 1999-00); Magic Johnson (3: 1986-87, 1988-89, 1989-90); Kareem Abdul-Jabbar (3: 1975-76, 1976-77, 1979-80)","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(56,90,160,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":18,"base":11.550000000000001,"x":[9],"y":[0.89999999999999858],"text":"<b>Boston Celtics<\/b><br>NBA Championships: 18 (1957, 1959, 1960, 1961, 1962, 1963, 1964, 1965, 1966, 1968, 1969, 1974, 1976, 1981, 1984, 1986, 2008, 2024)<br>NBA MVPs Won With Franchise: 10 trophy/trophies by 4 player(s): Larry Bird (3: 1983-84, 1984-85, 1985-86); Dave Cowens (1: 1972-73); Bill Russell (5: 1957-58, 1960-61, 1961-62, 1962-63, 1964-65); Bob Cousy (1: 1956-57)","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(29,66,138,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[0],"y":[1],"name":"70289bb50b0ca487597ff5e2cdc7e10c","type":"scatter","mode":"markers","opacity":0,"hoverinfo":"skip","showlegend":false,"marker":{"color":[0,1],"colorscale":[[0,"#93C5FD"],[0.0033444816053511705,"#93C5FD"],[0.006688963210702341,"#92C4FC"],[0.01003344481605351,"#92C4FC"],[0.013377926421404682,"#92C3FB"],[0.016722408026755852,"#91C3FB"],[0.02006688963210702,"#91C2FB"],[0.023411371237458192,"#90C2FA"],[0.026755852842809364,"#90C1FA"],[0.030100334448160532,"#90C1F9"],[0.033444816053511704,"#8FC0F9"],[0.036789297658862873,"#8FC0F9"],[0.040133779264214041,"#8FBFF8"],[0.043478260869565216,"#8EBFF8"],[0.046822742474916385,"#8EBEF7"],[0.05016722408026756,"#8DBEF7"],[0.053511705685618728,"#8DBDF7"],[0.056856187290969896,"#8DBDF6"],[0.060200668896321065,"#8CBCF6"],[0.06354515050167224,"#8CBCF5"],[0.066889632107023408,"#8CBCF5"],[0.070234113712374577,"#8BBBF5"],[0.073578595317725745,"#8BBBF4"],[0.076923076923076913,"#8ABAF4"],[0.080267558528428082,"#8ABAF3"],[0.083612040133779264,"#8AB9F3"],[0.086956521739130432,"#89B9F3"],[0.090301003344481601,"#89B8F2"],[0.093645484949832769,"#89B8F2"],[0.096989966555183937,"#88B7F1"],[0.10033444816053512,"#88B7F1"],[0.10367892976588629,"#87B6F1"],[0.10702341137123746,"#87B6F0"],[0.11036789297658862,"#87B5F0"],[0.11371237458193979,"#86B5EF"],[0.11705685618729096,"#86B4EF"],[0.12040133779264213,"#86B4EF"],[0.1237458193979933,"#85B4EE"],[0.12709030100334448,"#85B3EE"],[0.13043478260869565,"#84B3ED"],[0.13377926421404682,"#84B2ED"],[0.13712374581939799,"#84B2ED"],[0.14046822742474915,"#83B1EC"],[0.14381270903010032,"#83B1EC"],[0.14715719063545149,"#83B0EB"],[0.15050167224080266,"#82B0EB"],[0.15384615384615383,"#82AFEB"],[0.157190635451505,"#82AFEA"],[0.16053511705685616,"#81AEEA"],[0.16387959866220736,"#81AEE9"],[0.16722408026755853,"#80ADE9"],[0.1705685618729097,"#80ADE9"],[0.17391304347826086,"#80ADE8"],[0.17725752508361203,"#7FACE8"],[0.1806020066889632,"#7FACE7"],[0.18394648829431437,"#7FABE7"],[0.18729096989966554,"#7EABE7"],[0.19063545150501671,"#7EAAE6"],[0.19397993311036787,"#7DAAE6"],[0.19732441471571907,"#7DA9E5"],[0.20066889632107024,"#7DA9E5"],[0.20401337792642141,"#7CA8E5"],[0.20735785953177258,"#7CA8E4"],[0.21070234113712374,"#7CA7E4"],[0.21404682274247491,"#7BA7E4"],[0.21739130434782608,"#7BA7E3"],[0.22073578595317725,"#7AA6E3"],[0.22408026755852842,"#7AA6E2"],[0.22742474916387959,"#7AA5E2"],[0.23076923076923075,"#79A5E2"],[0.23411371237458192,"#79A4E1"],[0.23745819397993309,"#79A4E1"],[0.24080267558528426,"#78A3E0"],[0.24414715719063543,"#78A3E0"],[0.2474916387959866,"#78A2E0"],[0.25083612040133779,"#77A2DF"],[0.25418060200668896,"#77A1DF"],[0.25752508361204013,"#76A1DE"],[0.2608695652173913,"#76A1DE"],[0.26421404682274247,"#76A0DE"],[0.26755852842809363,"#75A0DD"],[0.2709030100334448,"#759FDD"],[0.27424749163879597,"#759FDC"],[0.27759197324414714,"#749EDC"],[0.28093645484949831,"#749EDC"],[0.28428093645484948,"#739DDB"],[0.28762541806020064,"#739DDB"],[0.29096989966555181,"#739CDA"],[0.29431438127090298,"#729CDA"],[0.29765886287625415,"#729CDA"],[0.30100334448160532,"#729BD9"],[0.30434782608695649,"#719BD9"],[0.30769230769230765,"#719AD9"],[0.31103678929765882,"#709AD8"],[0.31438127090300999,"#7099D8"],[0.31772575250836116,"#7099D7"],[0.32107023411371233,"#6F98D7"],[0.32441471571906355,"#6F98D7"],[0.32775919732441472,"#6F97D6"],[0.33110367892976589,"#6E97D6"],[0.33444816053511706,"#6E97D5"],[0.33779264214046822,"#6D96D5"],[0.34113712374581939,"#6D96D5"],[0.34448160535117056,"#6D95D4"],[0.34782608695652173,"#6C95D4"],[0.3511705685618729,"#6C94D3"],[0.35451505016722407,"#6C94D3"],[0.35785953177257523,"#6B93D3"],[0.3612040133779264,"#6B93D2"],[0.36454849498327757,"#6B92D2"],[0.36789297658862874,"#6A92D1"],[0.37123745819397991,"#6A92D1"],[0.37458193979933108,"#6991D1"],[0.37792642140468224,"#6991D0"],[0.38127090301003341,"#6990D0"],[0.38461538461538458,"#6890D0"],[0.38795986622073575,"#688FCF"],[0.39130434782608692,"#688FCF"],[0.39464882943143814,"#678ECE"],[0.39799331103678931,"#678ECE"],[0.40133779264214048,"#668ECE"],[0.40468227424749159,"#668DCD"],[0.40802675585284282,"#668DCD"],[0.41137123745819393,"#658CCC"],[0.41471571906354515,"#658CCC"],[0.41806020066889626,"#658BCC"],[0.42140468227424749,"#648BCB"],[0.4247491638795986,"#648ACB"],[0.42809364548494983,"#638ACA"],[0.43143812709030105,"#6389CA"],[0.43478260869565216,"#6389CA"],[0.43812709030100339,"#6289C9"],[0.4414715719063545,"#6288C9"],[0.44481605351170572,"#6288C9"],[0.44816053511705684,"#6187C8"],[0.45150501672240806,"#6187C8"],[0.45484949832775917,"#6086C7"],[0.4581939799331104,"#6086C7"],[0.46153846153846151,"#6086C7"],[0.46488294314381273,"#5F85C6"],[0.46822742474916385,"#5F85C6"],[0.47157190635451507,"#5F84C5"],[0.47491638795986618,"#5E84C5"],[0.47826086956521741,"#5E83C5"],[0.48160535117056852,"#5D83C4"],[0.48494983277591974,"#5D82C4"],[0.48829431438127086,"#5D82C4"],[0.49163879598662208,"#5C82C3"],[0.49498327759197319,"#5C81C3"],[0.49832775919732442,"#5C81C2"],[0.50167224080267558,"#5B80C2"],[0.50501672240802675,"#5B80C2"],[0.50836120401337792,"#5A7FC1"],[0.51170568561872909,"#5A7FC1"],[0.51505016722408026,"#5A7EC0"],[0.51839464882943143,"#597EC0"],[0.52173913043478259,"#597EC0"],[0.52508361204013376,"#597DBF"],[0.52842809364548493,"#587DBF"],[0.5317725752508361,"#587CBF"],[0.53511705685618727,"#577CBE"],[0.53846153846153844,"#577BBE"],[0.5418060200668896,"#577BBD"],[0.54515050167224077,"#567BBD"],[0.54849498327759194,"#567ABD"],[0.55183946488294311,"#567ABC"],[0.55518394648829428,"#5579BC"],[0.55852842809364545,"#5579BB"],[0.56187290969899661,"#5478BB"],[0.56521739130434778,"#5478BB"],[0.56856187290969895,"#5477BA"],[0.57190635451505023,"#5377BA"],[0.57525083612040129,"#5377BA"],[0.57859531772575257,"#5276B9"],[0.58193979933110362,"#5276B9"],[0.5852842809364549,"#5275B8"],[0.58862876254180596,"#5175B8"],[0.59197324414715724,"#5174B8"],[0.5953177257525083,"#5174B7"],[0.59866220735785958,"#5074B7"],[0.60200668896321063,"#5073B6"],[0.60535117056856191,"#4F73B6"],[0.60869565217391297,"#4F72B6"],[0.61204013377926425,"#4F72B5"],[0.61538461538461531,"#4E71B5"],[0.61872909698996659,"#4E71B5"],[0.62207357859531764,"#4E71B4"],[0.62541806020066892,"#4D70B4"],[0.62876254180601998,"#4D70B3"],[0.63210702341137126,"#4C6FB3"],[0.63545150501672232,"#4C6FB3"],[0.6387959866220736,"#4C6EB2"],[0.64214046822742465,"#4B6EB2"],[0.64548494983277593,"#4B6EB2"],[0.6488294314381271,"#4A6DB1"],[0.65217391304347827,"#4A6DB1"],[0.65551839464882944,"#4A6CB0"],[0.65886287625418061,"#496CB0"],[0.66220735785953178,"#496BB0"],[0.66555183946488294,"#496BAF"],[0.66889632107023411,"#486BAF"],[0.67224080267558528,"#486AAF"],[0.67558528428093645,"#476AAE"],[0.67892976588628762,"#4769AE"],[0.68227424749163879,"#4769AD"],[0.68561872909698995,"#4668AD"],[0.68896321070234112,"#4668AD"],[0.69230769230769229,"#4568AC"],[0.69565217391304346,"#4567AC"],[0.69899665551839463,"#4567AB"],[0.7023411371237458,"#4466AB"],[0.70568561872909696,"#4466AB"],[0.70903010033444813,"#4365AA"],[0.7123745819397993,"#4365AA"],[0.71571906354515047,"#4365AA"],[0.71906354515050164,"#4264A9"],[0.72240802675585281,"#4264A9"],[0.72575250836120397,"#4163A8"],[0.72909698996655514,"#4163A8"],[0.73244147157190631,"#4163A8"],[0.73578595317725748,"#4062A7"],[0.73913043478260865,"#4062A7"],[0.74247491638795982,"#3F61A7"],[0.74581939799331098,"#3F61A6"],[0.74916387959866215,"#3F60A6"],[0.75250836120401332,"#3E60A5"],[0.75585284280936449,"#3E60A5"],[0.75919732441471566,"#3D5FA5"],[0.76254180602006683,"#3D5FA4"],[0.76588628762541799,"#3D5EA4"],[0.76923076923076916,"#3C5EA4"],[0.77257525083612033,"#3C5EA3"],[0.7759197324414715,"#3B5DA3"],[0.77926421404682267,"#3B5DA2"],[0.78260869565217384,"#3B5CA2"],[0.785953177257525,"#3A5CA2"],[0.78929765886287628,"#3A5BA1"],[0.79264214046822734,"#395BA1"],[0.79598662207357862,"#395BA1"],[0.79933110367892968,"#395AA0"],[0.80267558528428096,"#385AA0"],[0.80602006688963213,"#38599F"],[0.80936454849498318,"#37599F"],[0.81270903010033435,"#37599F"],[0.81605351170568563,"#37589E"],[0.8193979933110368,"#36589E"],[0.82274247491638786,"#36579E"],[0.82608695652173902,"#35579D"],[0.8294314381270903,"#35569D"],[0.83277591973244147,"#34569C"],[0.83612040133779253,"#34569C"],[0.8394648829431437,"#34559C"],[0.84280936454849498,"#33559B"],[0.84615384615384615,"#33549B"],[0.8494983277591972,"#32549B"],[0.85284280936454837,"#32549A"],[0.85618729096989965,"#31539A"],[0.85953177257525082,"#315399"],[0.8628762541806021,"#315299"],[0.86622073578595304,"#305299"],[0.86956521739130432,"#305298"],[0.87290969899665549,"#2F5198"],[0.87625418060200677,"#2F5198"],[0.87959866220735772,"#2E5097"],[0.882943143812709,"#2E5097"],[0.88628762541806017,"#2D5097"],[0.88963210702341144,"#2D4F96"],[0.89297658862876239,"#2D4F96"],[0.89632107023411367,"#2C4E95"],[0.89966555183946484,"#2C4E95"],[0.90301003344481612,"#2B4E95"],[0.90635451505016706,"#2B4D94"],[0.90969899665551834,"#2A4D94"],[0.91304347826086951,"#2A4C94"],[0.91638795986622079,"#294C93"],[0.91973244147157174,"#294C93"],[0.92307692307692302,"#294B92"],[0.92642140468227419,"#284B92"],[0.92976588628762546,"#284A92"],[0.93311036789297663,"#274A91"],[0.93645484949832769,"#274A91"],[0.93979933110367886,"#264991"],[0.94314381270903014,"#264990"],[0.94648829431438131,"#254890"],[0.94983277591973236,"#254890"],[0.95317725752508353,"#24488F"],[0.95652173913043481,"#24478F"],[0.95986622073578598,"#23478E"],[0.96321070234113704,"#23468E"],[0.96655518394648821,"#22468E"],[0.96989966555183948,"#22468D"],[0.97324414715719065,"#21458D"],[0.97658862876254171,"#21458D"],[0.97993311036789288,"#20448C"],[0.98327759197324416,"#20448C"],[0.98662207357859533,"#1F448B"],[0.98996655518394638,"#1F438B"],[0.99331103678929755,"#1E438B"],[0.99665551839464883,"#1E428A"],[1,"#1D428A"]],"colorbar":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"thickness":23.039999999999996,"title":"NBA MVPs<br />(With Team)","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":15.940224159402243},"tickmode":"array","ticktext":["0.0","2.5","5.0","7.5","10.0"],"tickvals":[0.0016666666666666668,0.2508333333333333,0.49999999999999994,0.74916666666666665,0.99833333333333329],"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":12.7521793275218},"ticklen":2,"len":0.5}},"xaxis":"x","yaxis":"y","frame":null}],"layout":{"margin":{"t":43.098381070983812,"r":7.9701120797011216,"b":40.647571606475722,"l":145.85305105853058},"paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":15.940224159402243},"title":{"text":"NBA Championship Dynasties & Franchise MVPs (1946–2026)","font":{"color":"rgba(0,0,0,1)","family":"","size":19.128268991282692},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.90000000000000002,18.899999999999999],"tickmode":"array","ticktext":["0","5","10","15"],"tickvals":[0,5.0000000000000009,10,15],"categoryorder":"array","categoryarray":["0","5","10","15"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.9850560398505608,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":12.7521793275218},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.72455564360919278,"zeroline":false,"anchor":"y","title":{"text":"Total NBA Championships","font":{"color":"rgba(0,0,0,1)","family":"","size":15.940224159402243}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.40000000000000002,12.6],"tickmode":"array","ticktext":["Houston Rockets","Milwaukee Bucks","Oklahoma City Thunder","Detroit Pistons","Miami Heat","New York Knicks","Philadelphia 76ers","San Antonio Spurs","Chicago Bulls","Golden State Warriors","Los Angeles Lakers","Boston Celtics"],"tickvals":[1,2,3,4.0000000000000009,5,6,7.0000000000000009,8,9,10,11,12],"categoryorder":"array","categoryarray":["Houston Rockets","Milwaukee Bucks","Oklahoma City Thunder","Detroit Pistons","Miami Heat","New York Knicks","Philadelphia 76ers","San Antonio Spurs","Chicago Bulls","Golden State Warriors","Los Angeles Lakers","Boston Celtics"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.9850560398505608,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":12.7521793275218},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.72455564360919278,"zeroline":false,"anchor":"x","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":15.940224159402243}},"hoverformat":".2f"},"shapes":[],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":12.7521793275218},"title":{"text":"NBA MVPs<br />(With Team)","font":{"color":"rgba(0,0,0,1)","family":"","size":15.940224159402243}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"5faf54670c72":{"x":{},"y":{},"fill":{},"text":{},"type":"bar"}},"cur_data":"5faf54670c72","visdat":{"5faf54670c72":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-7fbe340188618ff74e2e" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-7fbe340188618ff74e2e">{"x":{"data":[{"orientation":"v","width":[3,1],"base":[6.5499999999999998,2.5499999999999998],"x":[1.5,0.5],"y":[0.90000000000000036,0.90000000000000036],"text":["<b>Dallas Wings<\/b><br>WNBA Championships: 3 (2003, 2006, 2008)<br>WNBA MVPs Won With Franchise: 0 MVPs won while playing for franchise","<b>Golden State Valkyries<\/b><br>WNBA Championships: 1 (2026)<br>WNBA MVPs Won With Franchise: 0 MVPs won while playing for franchise"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(253,186,116,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[3,1,1,1,1],"base":[9.5500000000000007,1.55,3.5499999999999998,4.5499999999999998,5.5499999999999998],"x":[1.5,0.5,0.5,0.5,0.5],"y":[0.89999999999999858,0.90000000000000013,0.90000000000000036,0.90000000000000036,0.90000000000000036],"text":["<b>Phoenix Mercury<\/b><br>WNBA Championships: 3 (2007, 2009, 2014)<br>WNBA MVPs Won With Franchise: 1 trophy/trophies by 1 player(s): Diana Taurasi (1: 2009)","<b>Chicago Sky<\/b><br>WNBA Championships: 1 (2021)<br>WNBA MVPs Won With Franchise: 1 trophy/trophies by 1 player(s): Elena Delle Donne (1: 2015)","<b>Indiana Fever<\/b><br>WNBA Championships: 1 (2012)<br>WNBA MVPs Won With Franchise: 1 trophy/trophies by 1 player(s): Tamika Catchings (1: 2011)","<b>New York Liberty<\/b><br>WNBA Championships: 1 (2024)<br>WNBA MVPs Won With Franchise: 1 trophy/trophies by 1 player(s): Breanna Stewart (1: 2023)","<b>Washington Mystics<\/b><br>WNBA Championships: 1 (2019)<br>WNBA MVPs Won With Franchise: 1 trophy/trophies by 1 player(s): Elena Delle Donne (1: 2019)"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(244,166,99,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[4,0],"base":[11.550000000000001,0.55000000000000004],"x":[2,0],"y":[0.89999999999999858,0.89999999999999991],"text":["<b>Minnesota Lynx<\/b><br>WNBA Championships: 4 (2011, 2013, 2015, 2017)<br>WNBA MVPs Won With Franchise: 2 trophy/trophies by 2 player(s): Sylvia Fowles (1: 2017); Maya Moore (1: 2014)","<b>Connecticut Sun<\/b><br>WNBA Championships: 0 (None)<br>WNBA MVPs Won With Franchise: 2 trophy/trophies by 2 player(s): Jonquel Jones (1: 2021); Tina Charles (1: 2012)"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(235,147,82,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":4,"base":12.550000000000001,"x":[2],"y":[0.89999999999999858],"text":"<b>Seattle Storm<\/b><br>WNBA Championships: 4 (2004, 2010, 2018, 2020)<br>WNBA MVPs Won With Franchise: 4 trophy/trophies by 2 player(s): Breanna Stewart (1: 2018); Lauren Jackson (3: 2003, 2007, 2010)","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(216,107,48,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[4,3],"base":[10.550000000000001,7.5499999999999998],"x":[2,1.5],"y":[0.89999999999999858,0.89999999999999947],"text":["<b>Houston Comets (2027 Relocation Revival)<\/b><br>WNBA Championships: 4 (1997, 1998, 1999, 2000 (Original Houston Comets 4-peat))<br>WNBA MVPs Won With Franchise: Original Houston Comets won 5 WNBA MVPs by 2 players: Cynthia Cooper (2: 1997, 1998) & Sheryl Swoopes (3: 2000, 2002, 2005)","<b>Las Vegas Aces<\/b><br>WNBA Championships: 3 (2022, 2023, 2025)<br>WNBA MVPs Won With Franchise: 5 trophy/trophies by 1 player(s): A'ja Wilson (5: 2020, 2022, 2024, 2025, 2026)"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(205,87,31,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":3,"base":8.5500000000000007,"x":[1.5],"y":[0.89999999999999858],"text":"<b>Los Angeles Sparks<\/b><br>WNBA Championships: 3 (2001, 2002, 2016)<br>WNBA MVPs Won With Franchise: 6 trophy/trophies by 3 player(s): Nneka Ogwumike (1: 2016); Candace Parker (2: 2008, 2013); Lisa Leslie (3: 2001, 2004, 2006)","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(194,65,12,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[0],"y":[1],"name":"7906f1f74fc71b81c4ddbaab235dc6b8","type":"scatter","mode":"markers","opacity":0,"hoverinfo":"skip","showlegend":false,"marker":{"color":[0,1],"colorscale":[[0,"#FDBA74"],[0.0033444816053511705,"#FDBA74"],[0.006688963210702341,"#FDB973"],[0.010033444816053512,"#FDB973"],[0.013377926421404682,"#FCB873"],[0.016722408026755852,"#FCB872"],[0.020066889632107024,"#FCB872"],[0.023411371237458196,"#FCB772"],[0.026755852842809364,"#FCB771"],[0.030100334448160532,"#FBB671"],[0.033444816053511704,"#FBB671"],[0.03678929765886288,"#FBB670"],[0.040133779264214048,"#FBB570"],[0.043478260869565216,"#FBB56F"],[0.046822742474916391,"#FBB56F"],[0.05016722408026756,"#FAB46F"],[0.053511705685618728,"#FAB46E"],[0.056856187290969896,"#FAB36E"],[0.060200668896321065,"#FAB36E"],[0.06354515050167224,"#FAB36D"],[0.066889632107023408,"#FAB26D"],[0.070234113712374577,"#F9B26D"],[0.073578595317725759,"#F9B16C"],[0.076923076923076927,"#F9B16C"],[0.080267558528428096,"#F9B16C"],[0.083612040133779264,"#F9B06B"],[0.086956521739130432,"#F9B06B"],[0.090301003344481601,"#F8AF6B"],[0.093645484949832783,"#F8AF6A"],[0.096989966555183951,"#F8AF6A"],[0.10033444816053512,"#F8AE6A"],[0.10367892976588629,"#F8AE69"],[0.10702341137123746,"#F8AD69"],[0.11036789297658862,"#F7AD69"],[0.11371237458193979,"#F7AD68"],[0.11705685618729096,"#F7AC68"],[0.12040133779264213,"#F7AC67"],[0.12374581939799333,"#F7AB67"],[0.12709030100334448,"#F7AB67"],[0.13043478260869565,"#F6AB66"],[0.13377926421404682,"#F6AA66"],[0.13712374581939799,"#F6AA66"],[0.14046822742474915,"#F6AA65"],[0.14381270903010032,"#F6A965"],[0.14715719063545152,"#F5A965"],[0.15050167224080269,"#F5A864"],[0.15384615384615385,"#F5A864"],[0.15719063545150502,"#F5A864"],[0.16053511705685619,"#F5A763"],[0.16387959866220736,"#F5A763"],[0.16722408026755853,"#F4A663"],[0.1705685618729097,"#F4A662"],[0.17391304347826086,"#F4A662"],[0.17725752508361203,"#F4A562"],[0.1806020066889632,"#F4A561"],[0.18394648829431437,"#F4A461"],[0.18729096989966557,"#F3A461"],[0.19063545150501673,"#F3A460"],[0.1939799331103679,"#F3A360"],[0.19732441471571907,"#F3A360"],[0.20066889632107024,"#F3A25F"],[0.20401337792642141,"#F2A25F"],[0.20735785953177258,"#F2A25F"],[0.21070234113712374,"#F2A15E"],[0.21404682274247491,"#F2A15E"],[0.21739130434782608,"#F2A15D"],[0.22073578595317725,"#F2A05D"],[0.22408026755852842,"#F1A05D"],[0.22742474916387959,"#F19F5C"],[0.23076923076923075,"#F19F5C"],[0.23411371237458192,"#F19F5C"],[0.23745819397993309,"#F19E5B"],[0.24080267558528426,"#F19E5B"],[0.24414715719063548,"#F09D5B"],[0.24749163879598665,"#F09D5A"],[0.25083612040133779,"#F09D5A"],[0.25418060200668896,"#F09C5A"],[0.25752508361204013,"#F09C59"],[0.2608695652173913,"#EF9B59"],[0.26421404682274247,"#EF9B59"],[0.26755852842809363,"#EF9B58"],[0.2709030100334448,"#EF9A58"],[0.27424749163879597,"#EF9A58"],[0.27759197324414714,"#EF9957"],[0.28093645484949831,"#EE9957"],[0.28428093645484948,"#EE9957"],[0.28762541806020064,"#EE9856"],[0.29096989966555181,"#EE9856"],[0.29431438127090304,"#EE9856"],[0.2976588628762542,"#ED9755"],[0.30100334448160537,"#ED9755"],[0.30434782608695654,"#ED9655"],[0.30769230769230771,"#ED9654"],[0.31103678929765888,"#ED9654"],[0.31438127090301005,"#EC9554"],[0.31772575250836121,"#EC9553"],[0.32107023411371238,"#EC9453"],[0.32441471571906355,"#EC9453"],[0.32775919732441472,"#EC9452"],[0.33110367892976589,"#EC9352"],[0.33444816053511706,"#EB9352"],[0.33779264214046822,"#EB9251"],[0.34113712374581939,"#EB9251"],[0.34448160535117056,"#EB9251"],[0.34782608695652173,"#EB9150"],[0.3511705685618729,"#EA9150"],[0.35451505016722407,"#EA9050"],[0.35785953177257523,"#EA904F"],[0.3612040133779264,"#EA904F"],[0.36454849498327757,"#EA8F4F"],[0.36789297658862874,"#E98F4E"],[0.37123745819397991,"#E98F4E"],[0.37458193979933113,"#E98E4E"],[0.3779264214046823,"#E98E4D"],[0.38127090301003347,"#E98D4D"],[0.38461538461538464,"#E98D4C"],[0.38795986622073581,"#E88D4C"],[0.39130434782608697,"#E88C4C"],[0.39464882943143814,"#E88C4B"],[0.39799331103678931,"#E88B4B"],[0.40133779264214048,"#E88B4B"],[0.40468227424749165,"#E78B4A"],[0.40802675585284282,"#E78A4A"],[0.41137123745819398,"#E78A4A"],[0.41471571906354515,"#E78949"],[0.41806020066889632,"#E78949"],[0.42140468227424749,"#E68949"],[0.42474916387959866,"#E68848"],[0.42809364548494983,"#E68848"],[0.43143812709030099,"#E68748"],[0.43478260869565216,"#E68747"],[0.43812709030100333,"#E58747"],[0.4414715719063545,"#E58647"],[0.44481605351170567,"#E58646"],[0.44816053511705684,"#E58546"],[0.451505016722408,"#E58546"],[0.45484949832775917,"#E48545"],[0.45819397993311034,"#E48445"],[0.46153846153846151,"#E48445"],[0.46488294314381268,"#E48344"],[0.46822742474916385,"#E48344"],[0.47157190635451501,"#E38344"],[0.47491638795986618,"#E38243"],[0.47826086956521735,"#E38243"],[0.48160535117056852,"#E38243"],[0.4849498327759198,"#E38142"],[0.48829431438127097,"#E38142"],[0.49163879598662213,"#E28042"],[0.4949832775919733,"#E28041"],[0.49832775919732447,"#E28041"],[0.50167224080267558,"#E27F41"],[0.50501672240802675,"#E27F40"],[0.50836120401337792,"#E17E40"],[0.51170568561872909,"#E17E40"],[0.51505016722408026,"#E17E3F"],[0.51839464882943143,"#E17D3F"],[0.52173913043478259,"#E17D3F"],[0.52508361204013376,"#E07C3E"],[0.52842809364548493,"#E07C3E"],[0.5317725752508361,"#E07C3E"],[0.53511705685618727,"#E07B3D"],[0.53846153846153844,"#E07B3D"],[0.5418060200668896,"#DF7A3D"],[0.54515050167224077,"#DF7A3C"],[0.54849498327759194,"#DF7A3C"],[0.55183946488294311,"#DF793C"],[0.55518394648829428,"#DF793B"],[0.55852842809364545,"#DE783B"],[0.56187290969899661,"#DE783B"],[0.56521739130434778,"#DE783A"],[0.56856187290969895,"#DE773A"],[0.57190635451505012,"#DE773A"],[0.57525083612040129,"#DD7639"],[0.57859531772575246,"#DD7639"],[0.58193979933110362,"#DD7639"],[0.58528428093645479,"#DD7538"],[0.58862876254180607,"#DD7538"],[0.59197324414715724,"#DC7438"],[0.59531772575250841,"#DC7437"],[0.59866220735785958,"#DC7437"],[0.60200668896321075,"#DC7337"],[0.60535117056856191,"#DB7336"],[0.60869565217391308,"#DB7236"],[0.61204013377926425,"#DB7236"],[0.61538461538461542,"#DB7235"],[0.61872909698996659,"#DB7135"],[0.62207357859531776,"#DA7135"],[0.62541806020066892,"#DA7034"],[0.62876254180602009,"#DA7034"],[0.63210702341137126,"#DA7034"],[0.63545150501672243,"#DA6F33"],[0.6387959866220736,"#D96F33"],[0.64214046822742477,"#D96E33"],[0.64548494983277593,"#D96E32"],[0.6488294314381271,"#D96E32"],[0.65217391304347827,"#D96D32"],[0.65551839464882944,"#D86D31"],[0.65886287625418061,"#D86C31"],[0.66220735785953178,"#D86C31"],[0.66555183946488294,"#D86C30"],[0.66889632107023411,"#D86B30"],[0.67224080267558539,"#D76B30"],[0.67558528428093645,"#D76A2F"],[0.67892976588628773,"#D76A2F"],[0.68227424749163879,"#D76A2F"],[0.68561872909699006,"#D7692E"],[0.68896321070234112,"#D6692E"],[0.6923076923076924,"#D6682E"],[0.69565217391304346,"#D6682D"],[0.69899665551839474,"#D6682D"],[0.7023411371237458,"#D5672D"],[0.70568561872909707,"#D5672C"],[0.70903010033444813,"#D5662C"],[0.71237458193979941,"#D5662C"],[0.71571906354515047,"#D5662B"],[0.71906354515050175,"#D4652B"],[0.72240802675585281,"#D4652B"],[0.72575250836120409,"#D4642A"],[0.72909698996655514,"#D4642A"],[0.73244147157190642,"#D4632A"],[0.73578595317725748,"#D36329"],[0.73913043478260876,"#D36329"],[0.74247491638795982,"#D36229"],[0.7458193979933111,"#D36228"],[0.74916387959866226,"#D36128"],[0.75250836120401343,"#D26128"],[0.7558528428093646,"#D26127"],[0.75919732441471577,"#D26027"],[0.76254180602006694,"#D26026"],[0.76588628762541811,"#D15F26"],[0.76923076923076927,"#D15F26"],[0.77257525083612044,"#D15F25"],[0.77591973244147161,"#D15E25"],[0.77926421404682278,"#D15E25"],[0.78260869565217395,"#D05D24"],[0.78595317725752512,"#D05D24"],[0.78929765886287628,"#D05C24"],[0.79264214046822745,"#D05C23"],[0.79598662207357862,"#D05C23"],[0.79933110367892979,"#CF5B23"],[0.80267558528428096,"#CF5B22"],[0.80602006688963213,"#CF5A22"],[0.80936454849498329,"#CF5A22"],[0.81270903010033446,"#CE5A21"],[0.81605351170568563,"#CE5921"],[0.8193979933110368,"#CE5921"],[0.82274247491638797,"#CE5820"],[0.82608695652173914,"#CE5820"],[0.8294314381270903,"#CD5720"],[0.83277591973244147,"#CD571F"],[0.83612040133779264,"#CD571F"],[0.83946488294314381,"#CD561F"],[0.84280936454849498,"#CC561E"],[0.84615384615384615,"#CC551E"],[0.84949832775919731,"#CC551D"],[0.85284280936454848,"#CC541D"],[0.85618729096989965,"#CC541D"],[0.85953177257525093,"#CB541C"],[0.86287625418060199,"#CB531C"],[0.86622073578595327,"#CB531C"],[0.86956521739130432,"#CB521B"],[0.8729096989966556,"#CB521B"],[0.87625418060200666,"#CA521B"],[0.87959866220735794,"#CA511A"],[0.882943143812709,"#CA511A"],[0.88628762541806028,"#CA501A"],[0.88963210702341133,"#C95019"],[0.89297658862876261,"#C94F19"],[0.89632107023411367,"#C94F18"],[0.89966555183946495,"#C94E18"],[0.90301003344481601,"#C94E18"],[0.90635451505016729,"#C84E17"],[0.90969899665551834,"#C84D17"],[0.91304347826086962,"#C84D17"],[0.91638795986622068,"#C84C16"],[0.91973244147157196,"#C74C16"],[0.92307692307692302,"#C74B15"],[0.9264214046822743,"#C74B15"],[0.92976588628762535,"#C74B15"],[0.93311036789297663,"#C74A14"],[0.93645484949832769,"#C64A14"],[0.93979933110367897,"#C64913"],[0.94314381270903003,"#C64913"],[0.94648829431438131,"#C64813"],[0.94983277591973236,"#C54812"],[0.95317725752508364,"#C54712"],[0.9565217391304347,"#C54712"],[0.95986622073578598,"#C54711"],[0.96321070234113704,"#C44611"],[0.96655518394648832,"#C44610"],[0.9698996655518396,"#C44510"],[0.97324414715719065,"#C4450F"],[0.97658862876254193,"#C4440F"],[0.97993311036789299,"#C3440F"],[0.98327759197324427,"#C3430E"],[0.98662207357859533,"#C3430E"],[0.98996655518394661,"#C3420D"],[0.99331103678929766,"#C2420D"],[0.99665551839464894,"#C2410C"],[1,"#C2410C"]],"colorbar":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"thickness":23.039999999999996,"title":"WNBA MVPs<br />(With Team)","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":15.940224159402243},"tickmode":"array","ticktext":["0","1","2","3","4","5","6"],"tickvals":[0.0016666666666666668,0.16777777777777778,0.33388888888888885,0.49999999999999994,0.6661111111111111,0.8322222222222222,0.99833333333333329],"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":12.7521793275218},"ticklen":2,"len":0.5}},"xaxis":"x","yaxis":"y","frame":null}],"layout":{"margin":{"t":43.098381070983812,"r":7.9701120797011216,"b":40.647571606475722,"l":222.36612702366136},"paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":15.940224159402243},"title":{"text":"WNBA Championship Franchises & Franchise MVPs (1997–2026)","font":{"color":"rgba(0,0,0,1)","family":"","size":19.128268991282692},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.20000000000000001,4.2000000000000002],"tickmode":"array","ticktext":["0","1","2","3","4"],"tickvals":[0,1,2,3,4],"categoryorder":"array","categoryarray":["0","1","2","3","4"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.9850560398505608,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":12.7521793275218},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.72455564360919278,"zeroline":false,"anchor":"y","title":{"text":"Total WNBA Championships","font":{"color":"rgba(0,0,0,1)","family":"","size":15.940224159402243}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.40000000000000002,13.6],"tickmode":"array","ticktext":["Connecticut Sun","Chicago Sky","Golden State Valkyries","Indiana Fever","New York Liberty","Washington Mystics","Dallas Wings","Las Vegas Aces","Los Angeles Sparks","Phoenix Mercury","Houston Comets (1997–2008 / 2027)","Minnesota Lynx","Seattle Storm"],"tickvals":[1,2,3,4,5,6,7,8,9,10,11,12,13],"categoryorder":"array","categoryarray":["Connecticut Sun","Chicago Sky","Golden State Valkyries","Indiana Fever","New York Liberty","Washington Mystics","Dallas Wings","Las Vegas Aces","Los Angeles Sparks","Phoenix Mercury","Houston Comets (1997–2008 / 2027)","Minnesota Lynx","Seattle Storm"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.9850560398505608,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":12.7521793275218},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.72455564360919278,"zeroline":false,"anchor":"x","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":15.940224159402243}},"hoverformat":".2f"},"shapes":[],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":12.7521793275218},"title":{"text":"WNBA MVPs<br />(With Team)","font":{"color":"rgba(0,0,0,1)","family":"","size":15.940224159402243}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"5faf43d773cb":{"x":{},"y":{},"fill":{},"text":{},"type":"bar"}},"cur_data":"5faf43d773cb","visdat":{"5faf43d773cb":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p><em>Chart note: Statistics current through the <strong>2025–26 NBA Finals (June 2026)</strong> and <strong>2026 WNBA Finals (Fall 2026)</strong>. Hover over any bar for exact championship years and MVP winners who won the award while playing for that franchise.</em></p>
+<hr>
+<section id="celtics-vs.-lakers-basketballs-defining-championship-rivalry-nba" class="level2">
+<h2 class="anchored" data-anchor-id="celtics-vs.-lakers-basketballs-defining-championship-rivalry-nba">1. Celtics vs.&nbsp;Lakers: Basketball’s Defining Championship Rivalry (NBA)</h2>
+<p>No rivalry in North American basketball matches the <strong>Boston Celtics</strong> (18 NBA championships) and <strong>Los Angeles Lakers</strong> (17 NBA championships), who have met <strong>12 times in the NBA Finals</strong> and account for nearly half of all titles since 1947.</p>
+<ul>
+<li><strong>1959–1969 (Russell vs.&nbsp;West &amp; Baylor):</strong> Bill Russell—who won <strong>5 NBA MVPs</strong> while playing for Boston—led the Celtics past the Lakers in seven Finals series during an 11-title dynasty.</li>
+<li><strong>1980s Revival (Bird vs.&nbsp;Magic):</strong> Larry Bird (<strong>3 Celtics MVPs</strong>, 1984–86) and Magic Johnson (<strong>3 Lakers MVPs</strong>, 1987, 1989, 1990) met in the 1984, 1985, and 1987 NBA Finals, transforming the NBA’s television and cultural reach.</li>
+<li><strong>Modern Chapters (2008–2024):</strong> Boston won in 2008 behind Paul Pierce and Kevin Garnett (who won his 2004 MVP earlier with Minnesota), Kobe Bryant (2008 Lakers MVP) answered in Game 7 of the 2010 Finals, LeBron James tied Boston at 17 banners in 2020, and Jayson Tatum and Jaylen Brown lifted Banner <strong>18</strong> in <strong>2024</strong>.</li>
+</ul>
+<p><strong>Read More (Original Sources):</strong> <a href="https://www.nba.com/history">NBA History</a> • <a href="https://www.nba.com/news/history-all-time-awards">NBA All-Time Awards</a> • <a href="https://www.basketball-reference.com/teams/BOS/">Celtics Franchise History (Basketball-Reference)</a> • <a href="https://www.basketball-reference.com/teams/LAL/">Lakers Franchise History (Basketball-Reference)</a></p>
+<hr>
+</section>
+<section id="wnba-dynasties-from-the-4-peat-comets-to-aja-wilsons-acesand-houstons-2027-return-wnba" class="level2">
+<h2 class="anchored" data-anchor-id="wnba-dynasties-from-the-4-peat-comets-to-aja-wilsons-acesand-houstons-2027-return-wnba">2. WNBA Dynasties: From the 4-Peat Comets to A’ja Wilson’s Aces—and Houston’s 2027 Return (WNBA)</h2>
+<p>Across the WNBA’s first 30 seasons (<strong>1997–2026</strong>), four franchises have set the championship standard—and the original dynasty is officially coming back:</p>
+<ul>
+<li><strong>Houston Comets (4 Titles: 1997, 1998, 1999, 2000):</strong> Led by <strong>Cynthia Cooper</strong> (back-to-back WNBA MVPs in 1997 &amp; 1998, plus four straight Finals MVPs), <strong>Sheryl Swoopes</strong> (3 WNBA MVPs with Houston in 2000, 2002, &amp; 2005), and <strong>Tina Thompson</strong>, Houston achieved the only <strong>four-peat</strong> in WNBA history. Following the 2026 season, the WNBA approved relocating the Connecticut Sun to Houston to revive the <strong>Houston Comets</strong> beginning in <strong>2027</strong>.</li>
+<li><strong>Minnesota Lynx (4 Titles: 2011, 2013, 2015, 2017) &amp; Seattle Storm (4 Titles: 2004, 2010, 2018, 2020):</strong> Cheryl Reeve’s Lynx dominated odd-numbered years in the 2010s with <strong>Maya Moore</strong> (2014 MVP) and <strong>Sylvia Fowles</strong> (2017 MVP), while Seattle went a perfect <strong>4–0</strong> in Finals appearances behind <strong>Sue Bird</strong>, <strong>Lauren Jackson</strong> (3 Storm MVPs), and <strong>Breanna Stewart</strong> (2018 Storm MVP; later 2023 Liberty MVP).</li>
+<li><strong>Las Vegas Aces (3 Titles: 2022, 2023, 2025):</strong> Coached by Becky Hammon, Las Vegas captured three championships in four years anchored by <strong>A’ja Wilson</strong>, who set an all-time WNBA record by winning her <strong>fifth regular-season MVP award in 2026</strong> (2020, 2022, 2024, 2025, 2026).</li>
+</ul>
+<p><strong>Read More (Original Sources):</strong> <a href="https://www.wnba.com/all-time-wnba-champions">WNBA All-Time Champions</a> • <a href="https://www.wnba.com/history">WNBA History</a> • <a href="https://www.basketball-reference.com/wnba/awards/mvp.html">WNBA MVP Award Winners (Basketball-Reference)</a> • <a href="https://www.basketball-reference.com/wnba/teams/LVA/">Las Vegas Aces History</a></p>
+<hr>
+</section>
+<section id="chasing-perfection-7210-chicago-bulls-739-golden-state-warriors-nba" class="level2">
+<h2 class="anchored" data-anchor-id="chasing-perfection-7210-chicago-bulls-739-golden-state-warriors-nba">3. Chasing Perfection: 72–10 Chicago Bulls &amp; 73–9 Golden State Warriors (NBA)</h2>
+<p>Two 82-game NBA regular seasons stand above every other in win-loss history:</p>
+<ul>
+<li><strong>1995–96 Chicago Bulls (72–10 Regular Season, 15–3 Playoffs):</strong> Returning for his first full season after 1993–94 retirement, <strong>Michael Jordan</strong> won his fourth of <strong>5 NBA MVPs with Chicago</strong>, led the league in scoring (30.4 PPG), and teamed with Scottie Pippen and Dennis Rodman to win the first title of Chicago’s second three-peat (<strong>1996–1998</strong>).</li>
+<li><strong>2015–16 Golden State Warriors (73–9 Regular Season):</strong> <strong>Stephen Curry</strong> shattered his own NBA single-season record with <strong>402 three-pointers</strong> during the 2015–16 regular season and became the <strong>first unanimous MVP in NBA history</strong>, pushing Cleveland to a legendary Game 7 in the 2016 Finals (where LeBron James and Kyrie Irving completed the only 3–1 Finals comeback in NBA history) before Golden State added titles in <strong>2017, 2018, and 2022</strong>.</li>
+</ul>
+<p><strong>Read More (Original Sources):</strong> <a href="https://www.nba.com/stats/">NBA Statistics</a> • <a href="https://www.basketball-reference.com/teams/CHI/1996.html">1995–96 Bulls Summary (Basketball-Reference)</a> • <a href="https://www.basketball-reference.com/teams/GSW/2016.html">2015–16 Warriors Summary (Basketball-Reference)</a></p>
+<hr>
+</section>
+<section id="historic-2025-2026-breakthroughs-valkyries-knicks-and-thunder-nba-wnba" class="level2">
+<h2 class="anchored" data-anchor-id="historic-2025-2026-breakthroughs-valkyries-knicks-and-thunder-nba-wnba">4. Historic 2025 &amp; 2026 Breakthroughs: Valkyries, Knicks, and Thunder (NBA &amp; WNBA)</h2>
+<p>The <strong>2025 and 2026 seasons</strong> delivered historic championship stories across both leagues:</p>
+<ul>
+<li><strong>Golden State Valkyries Win First Game 7 in WNBA Finals History (2026 WNBA Season):</strong> Just one year after debuting as a 2025 expansion franchise in San Francisco, coach Natalie Nakase’s Valkyries defeated the Atlanta Dream <strong>4–3</strong> in the <strong>2026 WNBA Finals</strong>—the first Finals Game 7 ever played under the WNBA’s expanded best-of-seven format—with <strong>Gabby Williams</strong> earning Finals MVP honors.</li>
+<li><strong>New York Knicks End a 53-Year Title Drought (2025–26 NBA Season):</strong> For the first time since 1973, Madison Square Garden celebrated an NBA championship in <strong>June 2026</strong> as Finals MVP <strong>Jalen Brunson</strong>, OG Anunoby, Mikal Bridges, Josh Hart, and Karl-Anthony Towns defeated Victor Wembanyama and the San Antonio Spurs <strong>4–1</strong>.</li>
+<li><strong>Oklahoma City Thunder &amp; Back-to-Back MVP Shai Gilgeous-Alexander (2024–25 &amp; 2025–26 NBA Seasons):</strong> One year earlier, Oklahoma City won Game 7 of the <strong>2025 NBA Finals</strong> over the Indiana Pacers behind <strong>Shai Gilgeous-Alexander</strong>, who went on to win consecutive regular-season <strong>NBA MVP awards in 2024–25 and 2025–26</strong>.</li>
+</ul>
+<p><strong>Read More (Original Sources):</strong> <a href="https://www.basketball-reference.com/playoffs/NBA_2026.html">2026 NBA Playoffs Summary</a> • <a href="https://www.basketball-reference.com/playoffs/NBA_2025.html">2025 NBA Playoffs Summary</a> • <a href="https://www.basketball-reference.com/wnba/playoffs/2026.html">2026 WNBA Playoffs Summary</a> • <a href="https://www.wnba.com/all-time-wnba-champions">WNBA All-Time Champions</a></p>
+<hr>
+</section>
+<section id="all-time-statistical-iconsand-why-league-context-matters-nba-wnba" class="level2">
+<h2 class="anchored" data-anchor-id="all-time-statistical-iconsand-why-league-context-matters-nba-wnba">5. All-Time Statistical Icons—And Why League Context Matters (NBA &amp; WNBA)</h2>
+<p>Comparing career totals requires respecting each league’s schedule structure: NBA seasons have featured <strong>82 regular-season games</strong> since 1967–68, whereas WNBA seasons grew gradually from <strong>28 games (1997)</strong> to <strong>34 games (2003–2019)</strong>, <strong>40 games (2023–2024)</strong>, and <strong>44 games (2025–2026)</strong>.</p>
+<ul>
+<li><strong>WNBA Career Benchmarks (1997–2026):</strong> <strong>Diana Taurasi</strong> (Phoenix Mercury, 2004–2024) retired as the only player in WNBA history past 10,000 regular-season points (<strong>10,646 PTS</strong>). <strong>Sue Bird</strong> (Seattle Storm) holds the WNBA all-time assists record (<strong>3,234 AST</strong>), and <strong>Tamika Catchings</strong> (Indiana Fever, 2011 MVP) leads WNBA history in career steals (<strong>1,074 STL</strong>). Meanwhile, <strong>Caitlin Clark</strong> reshaped single-season playmaking benchmarks with Indiana while helping drive record arena attendance across the league.</li>
+<li><strong>NBA Career Benchmarks (1946–2026):</strong> <strong>LeBron James</strong> surpassed Kareem Abdul-Jabbar’s long-standing 38,387-point mark to pass <strong>40,000+ regular-season NBA points</strong> (winning 4 NBA MVPs across Cleveland and Miami before winning the 2020 title with the Lakers), while <strong>John Stockton</strong> still holds the NBA’s career assists (<strong>15,806 AST</strong>) and steals (<strong>3,265 STL</strong>) records for the Utah Jazz.</li>
+</ul>
+<p><strong>Read More (Original Sources):</strong> <a href="https://stats.wnba.com/alltime-leaders/">WNBA All-Time Leaders</a> • <a href="https://www.nba.com/stats/alltime-leaders">NBA All-Time Statistical Leaders</a> • <a href="https://www.basketball-reference.com/leaders/franchise.html">NBA Franchise Career Leaders (Basketball-Reference)</a></p>
+<hr>
+</section>
+<section id="redrawing-the-basketball-map-the-20252030-expansion-wave-nba-wnba" class="level2">
+<h2 class="anchored" data-anchor-id="redrawing-the-basketball-map-the-20252030-expansion-wave-nba-wnba">6. Redrawing the Basketball Map: The 2025–2030 Expansion Wave (NBA &amp; WNBA)</h2>
+<p>Professional basketball’s North American map is expanding faster in the late 2020s than at any point in decades:</p>
+<ul>
+<li><strong>WNBA Expansion from 12 to 18 Teams (2025–2030):</strong> Following the <strong>Golden State Valkyries</strong> (2025), the WNBA launched two 30th-anniversary expansion franchises in 2026—the <strong>Portland Fire</strong> and Canada’s first WNBA team, the <strong>Toronto Tempo</strong>—and officially awarded three additional franchises backed by NBA ownership groups: <strong>Cleveland (2028)</strong>, <strong>Detroit (2029)</strong>, and <strong>Philadelphia (2030)</strong>.</li>
+<li><strong>NBA Expansion Evaluations in Seattle &amp; Las Vegas (Target 2028–29):</strong> In <strong>March 2026</strong>, the NBA Board of Governors voted <strong>30–0</strong> to formally advance expansion evaluations for <strong>Seattle</strong> (poised to revive the beloved SuperSonics tradition at Climate Pledge Arena) and <strong>Las Vegas</strong> (already home to NBA Summer League and the Emirates NBA Cup Final Four).</li>
+</ul>
+<p><strong>Read More (Original Sources):</strong> <a href="https://www.wnba.com/teams">WNBA Teams</a> • <a href="https://www.nba.com/teams">NBA Teams</a> • <a href="https://www.basketball-reference.com/teams/">Basketball-Reference Active &amp; Historical Franchises</a></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/Trinnn28\.github\.io\/Sports-Media\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
